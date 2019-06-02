@@ -1,0 +1,21 @@
+<app-dialog-header>
+  <mat-icon>event</mat-icon>
+  <span>Criar evento</span>
+  <p>Vamos lá</p>
+</app-dialog-header>
+<app-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field fxFlexFill appearance="outline">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" cdkFocusInitial required>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlexFill appearance="outline">
+      <mat-label>Detalhes</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="6" formControlName="description"></textarea>
+    </mat-form-field>
+  </form>
+</app-dialog-content>
+<app-dialog-actions>
+  <button mat-button (click)="onClose()" cdkFocusInitial>Criar</button>
+</app-dialog-actions>

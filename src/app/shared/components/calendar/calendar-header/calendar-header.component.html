@@ -1,0 +1,25 @@
+<!-- <div class="btn-group">
+  <button class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+    Previous
+  </button>
+  <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+    Today
+  </div>
+  <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+    (viewDateChange)="viewDateChange.next(viewDate)">
+    Next
+  </div>
+</div> -->
+<div class="time-buttons" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+    (viewDateChange)="viewDateChange.next(viewDate)" [excludeDays]="excludeDays">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-button mwlCalendarToday [(viewDate)]="viewDate">
+    Hoje
+  </button>
+  <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+    (viewDateChange)="viewDateChange.next(viewDate)" [excludeDays]="excludeDays">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

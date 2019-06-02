@@ -1,0 +1,7 @@
+<mat-action-list>
+  <button mat-list-item *ngFor="let o of options" (click)="bottomSheetRef.dismiss(o.option)">
+    <mat-icon *ngIf="o.icon" mat-list-icon>{{o.icon}}</mat-icon>
+    <h3 mat-line>{{o.title}}</h3>
+    <p *ngIf="o.subtitle" mat-line>{{o.subtitle}}</p>
+  </button>
+</mat-action-list>

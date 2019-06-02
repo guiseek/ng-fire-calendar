@@ -1,0 +1,57 @@
+<app-dialog-header>
+  <mat-icon>event</mat-icon>
+  <span>Alterar evento</span>
+  <p>{{start.value | date:'full'}}</p>
+</app-dialog-header>
+<app-dialog-content>
+  <pre>{{form.value|json}}</pre>
+  <form [formGroup]="form">
+    <div class="frequence" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+      <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+
+        <mat-checkbox formControlName="allDay" (change)="changeAllDay($event)">Dia inteiro</mat-checkbox>
+        <mat-select [formControl]="repeatControl" (valueChange)="changeRepeat($event)">
+          <mat-option *ngFor="let o of rruleOptions" [value]="o.value">
+            {{o.viewValue}} {{o?.paramValue | date: 'EEEE'}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div fxFlex *ngIf="repeatControl.value">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="false" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Exemplo
+              </mat-panel-title>
+              <mat-panel-description>
+                Próximos 10 dias
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <ng-container *ngFor="let r of repeat">
+                <mat-list-item>
+                  {{r | date: 'fullDate'}}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </ng-container>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <mat-form-field fxFlexFill appearance="outline">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" cdkFocusInitial required>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlexFill appearance="outline">
+      <mat-label>Detalhes</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="6" formControlName="description"></textarea>
+    </mat-form-field>
+  </form>
+</app-dialog-content>
+<app-dialog-actions>
+  <!-- <button mat-button color="warn" (click)="onRemove()">Remover</button> -->
+  <button mat-button (click)="onClose()">Salvar</button>
+</app-dialog-actions>

@@ -1,0 +1,70 @@
+@import '~angular-calendar/scss/angular-calendar.scss';
+@import "~@angular/material/theming";
+
+app-schedule-page {
+  .mat-fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+  }
+  .cal-week-view .cal-event {
+    color: #fff;
+  }
+
+  $bg-dark-primary: #1f262d;
+  $bg-dark-secondary: #394046;
+  // $bg-active: #2c343a;
+  $bg-active: rgba(mat-color($mat-purple, 500), .1);
+  $today-bg: rgba(mat-color($mat-purple, 500), .1);
+  // $text-color: #d5d6d7;
+  $text-color: rgba(mat-color($mat-purple, 500), .5);
+  $border-color: rgba(mat-color($mat-purple, 500), .2);
+  // $border-color: rgba(0, 0, 0, 0.2);
+  @include cal-theme(
+    (
+      // bg-primary: $bg-dark-primary,
+      // bg-secondary: $bg-dark-secondary,
+      weekend-color: mat-color($mat-purple, 900),
+      // bg-active: mat-color($mat-purple, 600),
+      bg-active: $bg-active,
+      border-color: $border-color,
+      gray: $bg-dark-secondary,
+      today-bg: $today-bg,
+      // today-bg: $bg-dark-secondary,
+      event-color-primary: $bg-dark-secondary
+    )
+  );
+  .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.15;
+  }
+  background-color: $bg-dark-primary;
+  color: $text-color;
+
+  .card {
+    border-color: $border-color;
+  }
+
+  .card-header {
+    background-color: $bg-dark-secondary;
+  }
+
+  .card-body {
+    background-color: $bg-dark-primary;
+  }
+
+  .nav-tabs {
+    border-bottom-color: $border-color;
+  }
+
+  .nav-tabs .nav-link.active {
+    background-color: $bg-dark-primary;
+    color: $text-color;
+    border-color: $border-color;
+  }
+
+  .nav-tabs .nav-link:hover,
+  .nav-tabs .nav-link:focus {
+    border-color: $border-color;
+  }
+}
